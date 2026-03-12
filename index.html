@@ -616,6 +616,186 @@
                 border-radius: 10px;
             }
         }
+        /* === NEW FEATURES === */
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: bounceFloat 3s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe57;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            color: white;
+        }
+        @keyframes bounceFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* PDF Download Button */
+        .download-btn-container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeSlideUp 0.8s ease-out 0.6s both;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        .download-btn:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Carousel */
+        .gallery-section {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            animation: fadeSlideUp 0.8s ease-out 0.7s both;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        .gallery-track {
+            display: flex;
+            width: calc(250px * 10);
+            animation: scrollGallery 30s linear infinite;
+        }
+        .gallery-track:hover {
+            animation-play-state: paused;
+        }
+        .gallery-item {
+            width: 250px;
+            height: 180px;
+            flex-shrink: 0;
+            padding: 10px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.03);
+            border-color: var(--gold);
+            box-shadow: 0 5px 15px rgba(201, 168, 76, 0.3);
+        }
+        @keyframes scrollGallery {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 5)); }
+        }
+
+        /* Google Maps Embed */
+        .map-container {
+            margin-top: 1.5rem;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-link i {
+            width: 18px;
+            height: 18px;
+        }
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(201, 168, 76, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+            .gallery-item {
+                width: 200px;
+                height: 140px;
+            }
+            .gallery-track {
+                width: calc(200px * 10);
+            }
+            @keyframes scrollGallery {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-200px * 5)); }
+            }
+        }
     </style>
 </head>
 <body>
@@ -642,6 +822,11 @@
     <div class="float-decor float-decor-3">
         <i data-lucide="pen-tool" style="width:28px;height:28px;"></i>
     </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918282857771" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+    </a>
 
     <!-- Page Content -->
     <div class="page-wrapper">
@@ -694,6 +879,31 @@
                     <div class="countdown-value" id="cd-seconds">00</div>
                     <div class="countdown-unit">Seconds</div>
                 </div>
+            </div>
+        </section>
+
+        <!-- PDF Download Button -->
+        <div class="download-btn-container">
+            <a href="assets/prospectus.pdf" target="_blank" class="download-btn" aria-label="Download Prospectus PDF">
+                <i data-lucide="download"></i> Download Prospectus (PDF)
+            </a>
+        </div>
+
+        <!-- Gallery Carousel -->
+        <section class="gallery-section">
+            <div class="gallery-track">
+                <!-- Original Set -->
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800" alt="Students in Classroom"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800" alt="School Activity"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546410531-b4c6e91def5b?auto=format&fit=crop&q=80&w=800" alt="School Extracurriculars"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800" alt="School Events"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=800" alt="Campus Facilities"></div>
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800" alt="Students in Classroom"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800" alt="School Activity"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546410531-b4c6e91def5b?auto=format&fit=crop&q=80&w=800" alt="School Extracurriculars"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800" alt="School Events"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=800" alt="Campus Facilities"></div>
             </div>
         </section>
 
@@ -784,6 +994,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Google Maps Embed -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.6496472283995!2d88.3039145!3d22.4808381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270a6cbaec695%3A0xc3cfc23e66a463a5!2sIndian%20Public%20School%20Shalimar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" title="Indian Public School Location on Map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
                 </div>
             </div>
 
@@ -791,6 +1007,12 @@
 
         <!-- Footer -->
         <footer class="footer" id="footer">
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            </div>
             <img src="imgs/footer-logo.png" alt="Indian Public School Shalimar" class="footer-logo">
             <p class="footer-text">© 2025 Indian Public School Shalimar. All rights reserved.</p>
         </footer>
