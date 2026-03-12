@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Maintenance - Indian Public School Shalimar</title>
+    <meta name="description" content="Indian Public School Shalimar - CBSE Co-Ed English Medium School. Our website is currently under maintenance. Contact us for admissions and inquiries.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --maroon-deep: #4a1526;
+            --maroon: #6b1d3a;
+            --maroon-light: #8b2f52;
+            --maroon-glow: rgba(139, 47, 82, 0.4);
+            --gold: #c9a84c;
+            --gold-light: #dfc06e;
+            --gold-pale: #f0e0a8;
+            --gold-glow: rgba(201, 168, 76, 0.35);
+            --cream: #fdf8ef;
+            --cream-dark: #f5ead5;
+            --burgundy: #722f37;
+            --dark-bg: #1a0a12;
+            --dark-card: rgba(75, 21, 38, 0.25);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.45);
+            --border-subtle: rgba(201, 168, 76, 0.15);
+            --border-accent: rgba(201, 168, 76, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-primary);
+        }
+
+        /* === ANIMATED BACKGROUND === */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(107, 29, 58, 0.5) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(139, 47, 82, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 40% at 10% 90%, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #1a0a12 0%, #120810 50%, #0d060b 100%);
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(rgba(201, 168, 76, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.5) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+            animation: orbFloat 12s ease-in-out infinite;
+        }
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: rgba(107, 29, 58, 0.3);
+            top: -10%; left: -5%;
+            animation-delay: 0s;
+        }
+        .orb-2 {
+            width: 300px; height: 300px;
+            background: rgba(201, 168, 76, 0.12);
+            bottom: 10%; right: -5%;
+            animation-delay: -4s;
+        }
+        .orb-3 {
+            width: 250px; height: 250px;
+            background: rgba(139, 47, 82, 0.2);
+            top: 50%; left: 60%;
+            animation-delay: -8s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleRise 8s ease-in-out infinite;
+        }
+        @keyframes particleRise {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.1; }
+            100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+        }
+
+        /* === MAIN LAYOUT === */
+        .page-wrapper {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* === HEADER / LOGO === */
+        .header {
+            width: 100%;
+            max-width: 720px;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeSlideDown 0.8s ease-out;
+        }
+
+        .logo-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--maroon-glow), var(--gold-glow));
+            filter: blur(20px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: logoPulse 4s ease-in-out infinite alternate;
+        }
+        .logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes logoPulse {
+            from { opacity: 0.3; transform: scale(0.95); }
+            to { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        /* Decorative divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            margin: 1.2rem 0;
+        }
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .divider-diamond {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            opacity: 0.6;
+        }
+
+        /* === STATUS BADGE === */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.05));
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            margin-bottom: 2rem;
+            animation: fadeSlideUp 0.8s ease-out 0.2s both;
+            backdrop-filter: blur(10px);
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: statusPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 8px var(--gold-glow);
+        }
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--gold-glow); }
+            50% { opacity: 0.4; box-shadow: 0 0 2px var(--gold-glow); }
+        }
+        .status-text {
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            text-align: center;
+            max-width: 640px;
+            margin-bottom: 3rem;
+            animation: fadeSlideUp 0.8s ease-out 0.4s both;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold-pale));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Website URL pill */
+        .url-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+        .url-pill:hover {
+            border-color: var(--border-accent);
+            background: rgba(201, 168, 76, 0.06);
+        }
+        .url-pill i {
+            color: var(--gold);
+        }
+        .url-pill span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* === CARDS GRID === */
+        .cards-container {
+            width: 100%;
+            max-width: 720px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(75, 21, 38, 0.2), rgba(26, 10, 18, 0.6));
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: fadeSlideUp 0.8s ease-out both;
+        }
+        .glass-card:nth-child(1) { animation-delay: 0.5s; }
+        .glass-card:nth-child(2) { animation-delay: 0.7s; }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.3;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 60px rgba(107, 29, 58, 0.15), 0 0 40px rgba(201, 168, 76, 0.05);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .card-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-title-icon i {
+            color: var(--gold-light);
+            width: 18px;
+            height: 18px;
+        }
+        .card-title h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* === FORM STYLES === */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+        .form-input:focus {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+        }
+        textarea.form-input {
+            resize: none;
+            min-height: 90px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            color: var(--gold-light);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; right: 0; bottom: 0;
+            width: 200%;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.15), transparent);
+            transition: transform 0.6s ease;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(107, 29, 58, 0.4);
+        }
+        .submit-btn:hover::before {
+            transform: translateX(50%);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* === CONTACT INFO === */
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .info-icon-box {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.05));
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .info-row:hover .info-icon-box {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.1));
+            border-color: rgba(201, 168, 76, 0.25);
+        }
+        .info-icon-box i {
+            color: var(--gold);
+            width: 22px;
+            height: 22px;
+        }
+        .info-content h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .info-content p,
+        .info-content a {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .info-content a:hover {
+            color: var(--gold-light);
+        }
+        .info-content .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .info-content .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-content .contact-link i {
+            width: 14px;
+            height: 14px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            width: 100%;
+            max-width: 720px;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+            animation: fadeSlideUp 0.8s ease-out 0.9s both;
+        }
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+        }
+        .footer-logo:hover {
+            opacity: 1;
+        }
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* === FLOATING DECOR === */
+        .float-decor {
+            position: fixed;
+            opacity: 0.08;
+            z-index: 5;
+            pointer-events: none;
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .float-decor i {
+            color: var(--gold);
+        }
+        .float-decor-1 {
+            bottom: 8%; left: 5%;
+        }
+        .float-decor-2 {
+            top: 12%; right: 6%;
+            animation-delay: -2s;
+        }
+        .float-decor-3 {
+            top: 55%; left: 3%;
+            animation-delay: -4s;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(5deg); }
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 1.5rem 1rem;
+            }
+            .glass-card {
+                padding: 1.5rem;
+            }
+            .logo-img {
+                height: 60px;
+            }
+            .info-row {
+                gap: 0.75rem;
+            }
+            .info-icon-box {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-canvas"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating Decor -->
+    <div class="float-decor float-decor-1">
+        <i data-lucide="graduation-cap" style="width:48px;height:48px;"></i>
+    </div>
+    <div class="float-decor float-decor-2">
+        <i data-lucide="book-open" style="width:36px;height:36px;"></i>
+    </div>
+    <div class="float-decor float-decor-3">
+        <i data-lucide="pen-tool" style="width:28px;height:28px;"></i>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+
+        <!-- Header with Logo -->
+        <header class="header" id="header">
+            <div class="logo-container">
+                <img src="imgs/logo.png" alt="Indian Public School Shalimar Logo" class="logo-img">
+            </div>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-diamond"></span>
+                <span class="divider-line"></span>
+            </div>
+        </header>
+
+        <!-- Status Badge -->
+        <div class="status-badge" id="status-badge">
+            <span class="status-dot"></span>
+            <span class="status-text">Under Maintenance</span>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <h1>Something <span class="highlight">Extraordinary</span> is Coming</h1>
+            <p>We're crafting a brand-new digital experience for our school community. Our team is putting the finishing touches — we'll be back shortly!</p>
+            <div class="url-pill">
+                <i data-lucide="globe" style="width:16px;height:16px;"></i>
+                <span>ipsthakurpukur.com</span>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <div class="cards-container">
+
+            <!-- Contact Form -->
+            <div class="glass-card" id="contact-form-card">
+                <div class="card-title">
+                    <div class="card-title-icon">
+                        <i data-lucide="message-circle"></i>
+                    </div>
+                    <h3>Get in Touch</h3>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <input type="hidden" name="_subject" value="New Contact from IPS Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="text" name="name" placeholder="Your Name" class="form-input" required id="input-name">
+                    <input type="email" name="email" placeholder="Your Email" class="form-input" required id="input-email">
+                    <input type="tel" name="phone" placeholder="Phone Number" class="form-input" id="input-phone">
+                    <textarea name="message" placeholder="Your Message" class="form-input" required id="input-message"></textarea>
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="glass-card" id="contact-info-card">
+                <div class="card-title">
+                    <div class="card-title-icon">
+                        <i data-lucide="school"></i>
+                    </div>
+                    <h3>Our Main Branch</h3>
+                </div>
+                <div class="info-grid">
+                    <!-- Address -->
+                    <div class="info-row">
+                        <div class="info-icon-box">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Address</h4>
+                            <p>Indian Public School<br>
+                            104, M. G. Road, Joka, Kabar Danga<br>
+                            Thakurpukur, Kolkata, West Bengal 700104</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="info-row">
+                        <div class="info-icon-box">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <div class="contact-links">
+                                <a href="tel:+918282857771" class="contact-link">
+                                    <i data-lucide="phone-call"></i>
+                                    +91 82828 57771
+                                </a>
+                                <a href="tel:+918282857772" class="contact-link">
+                                    <i data-lucide="phone-call"></i>
+                                    +91 82828 57772
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="info-row">
+                        <div class="info-icon-box">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <div class="contact-links">
+                                <a href="mailto:principal@ipsthakurpukur.com" class="contact-link">
+                                    <i data-lucide="user"></i>
+                                    principal@ipsthakurpukur.com
+                                </a>
+                                <a href="mailto:info@ipsthakurpukur.com" class="contact-link">
+                                    <i data-lucide="info"></i>
+                                    info@ipsthakurpukur.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            <img src="imgs/footer-logo.png" alt="Indian Public School Shalimar" class="footer-logo">
+            <p class="footer-text">© 2025 Indian Public School Shalimar. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Generate floating particles
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            const count = 20;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDelay = (Math.random() * 8) + 's';
+                p.style.animationDuration = (6 + Math.random() * 6) + 's';
+                p.style.width = (2 + Math.random() * 3) + 'px';
+                p.style.height = p.style.width;
+                container.appendChild(p);
+            }
+        })();
+
+        // FormSubmit.co AJAX submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.submit-btn');
+            const originalText = btn.textContent.trim();
+
+            // Show loading state
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            const formData = new FormData(this);
+
+            fetch('https://formsubmit.co/ajax/info@ipsthakurpukur.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === 'true' || data.success === true) {
+                    btn.textContent = '✓ Message Sent!';
+                    btn.style.background = 'linear-gradient(135deg, #2d6a4f, #40916c)';
+                    btn.style.color = '#fff';
+                    btn.style.opacity = '1';
+                    contactForm.reset();
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                btn.textContent = '✗ Failed, try again';
+                btn.style.background = 'linear-gradient(135deg, #9b2c2c, #c53030)';
+                btn.style.color = '#fff';
+                btn.style.opacity = '1';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
